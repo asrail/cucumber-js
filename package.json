@@ -55,7 +55,8 @@
     "mkdirp": "0.3.3",
     "cucumber-html": "0.2.2",
     "walkdir": "0.0.4",
-    "coffee-script": "1.4.0"
+    "coffee-script": "1.4.0",
+    "iced-coffee-script": "1.4.0b"
   },
   "scripts": {
     "test": "./bin/cucumber.js && jasmine-node spec"
