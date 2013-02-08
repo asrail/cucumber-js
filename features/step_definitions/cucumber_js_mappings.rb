@@ -1,6 +1,7 @@
 module CucumberJsMappings
   STEP_DEFINITIONS_FILE                   = "features/step_definitions/cucumber_steps.js"
   COFFEE_SCRIPT_DEFINITIONS_FILE          = "features/step_definitions/cucumber_steps.coffee"
+  ICED_COFFEE_SCRIPT_DEFINITIONS_FILE     = "features/step_definitions/cucumber_steps.iced"
   FEATURE_FILE                            = "features/a_feature.feature"
   WORLD_VARIABLE_LOG_FILE                 = "world_variable.log"
   WORLD_FUNCTION_LOG_FILE                 = "world_function.log"
@@ -356,6 +357,19 @@ EOF
   def write_coffee_script_definition_file
     @mapping_name = "a CoffeeScript mapping"
     append_to_file COFFEE_SCRIPT_DEFINITIONS_FILE, <<-EOF
+fs = require('fs')
+stepDefinitions = () ->
+  this.defineStep(/^#{@mapping_name}$/, (callback) ->
+    fs.writeFileSync('#{step_file(@mapping_name)}', '')
+    callback()
+  )
+module.exports = stepDefinitions
+EOF
+  end
+
+  def write_iced_coffee_script_definition_file
+    @mapping_name = "a IcedCoffeeScript mapping"
+    append_to_file ICED_COFFEE_SCRIPT_DEFINITIONS_FILE, <<-EOF
 fs = require('fs')
 stepDefinitions = () ->
   this.defineStep(/^#{@mapping_name}$/, (callback) ->

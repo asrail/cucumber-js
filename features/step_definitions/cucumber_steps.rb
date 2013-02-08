@@ -5,6 +5,10 @@ Given /^a mapping written in CoffeeScript$/ do
   write_coffee_script_definition_file
 end
 
+Given /^a mapping written in IcedCoffeeScript$/ do
+  write_iced_coffee_script_definition_file
+end
+
 Given /^a mapping with a string-based pattern$/ do
   write_string_based_pattern_mapping
 end
